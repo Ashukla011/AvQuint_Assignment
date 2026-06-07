@@ -3,6 +3,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const {connectDB} = require("./config/db.js");
 const {healthRoutes} = require("./routes/healthRoutes.js");
+const {taskRoutes} = require("./routes/taskRoutes.js");
+const {authRoutes} = require("./routes/authRoutes.js");
+
 const cors = require("cors");
 
 dotenv.config();
@@ -13,6 +16,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/health", healthRoutes);
+app.use("/api/tasks", taskRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(process.env.PORT, async () => {
   try {
